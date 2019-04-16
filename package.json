@@ -25,10 +25,11 @@
   },
   "homepage": "https://github.com/facn5/Battuta#readme",
   "dependencies": {
-    "nodemon": "^1.18.11",
-    "tape": "^4.10.1"
+    "pg": "^7.9.0"
   },
   "devDependencies": {
-    "tap-spec": "^5.0.0"
+    "nodemon": "^1.18.11",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
   }
 }
