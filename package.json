@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/facn5/Battuta#readme",
   "dependencies": {
+    "cookie": "^0.3.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^7.9.0"
   },
   "devDependencies": {
