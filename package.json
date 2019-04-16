@@ -1,0 +1,34 @@
+{
+  "name": "battuta",
+  "version": "1.0.0",
+  "description": "Rideshare app for travelers near and far",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js | tap.spec",
+    "devStart": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facn5/Battuta.git"
+  },
+  "keywords": [
+    "battuta",
+    "travel",
+    "rideshare",
+    "duck",
+    "app"
+  ],
+  "author": "John and Obaydah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/facn5/Battuta/issues"
+  },
+  "homepage": "https://github.com/facn5/Battuta#readme",
+  "dependencies": {
+    "nodemon": "^1.18.11",
+    "tape": "^4.10.1"
+  },
+  "devDependencies": {
+    "tap-spec": "^5.0.0"
+  }
+}
