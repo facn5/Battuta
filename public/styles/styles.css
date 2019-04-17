@@ -1,6 +1,7 @@
 body {
   font-family: 'Raleway', sans-serif;
   text-align: center;
+  margin: 0 auto;
 }
 
 h1 {
@@ -8,9 +9,19 @@ h1 {
     font-family: 'Playfair Display', serif;
 }
 
-table {
+.logins {
   display: inline-block;
-  margin: 1rem 0;
+}
+
+#offerButtons {
+  display: block;
+}
+
+table, fieldset, form {
+  /* display: inline-block; */
+  margin: .5rem auto;
+  padding: .5rem;
+
 }
 
 table, th, td {
@@ -19,5 +30,7 @@ table, th, td {
 }
 
 th, td {
-  text-align: left;
+  text-align: center;
+  margin: .2rem;
+  padding: .2rem;
 }
