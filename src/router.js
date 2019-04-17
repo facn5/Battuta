@@ -1,5 +1,5 @@
 const url = require('url');
-const handler = require('./handlers');
+const handler = require('./handlers.js');
 
 const {readFile} = require('fs');
 const {parse} = require('cookie');
@@ -27,51 +27,17 @@ const router = (req, res) => {
         res.writeHead(302, {'Location': '/', 'Set-Cookie': 'jwt=0; Max-Age=0'});
         return res.end();
       }
-    } else if (url === "/addRide") {
-      if (req.method === "POST")
-      handlers.post(req, res);
-      else handlers.error(res);
     } else if (url.indexOf('public') !== -1){
         handler.public(url, res);
-    } else if (url === '/auth') {
-      const send401 = () => {
-        const message = 'fail!';
-        res.writeHead(
-          401,
-          {
-            'Content-Type': 'text/plain',
-            'Content-Length': message.length
-          }
-        );
-        return res.end(message);
+    } else if (url === '/addRide') {
+      if (req.method === 'POST') {
+        handler.post(req, res);
+        res.writeHead(302, {'Location': '/', "Content-Type": 'text/plain'});
+        return res.end();
       }
-
-      if (!req.headers.cookie) return send401();
-
-      const { jwt } = parse(req.headers.cookie);
-
-      if (!jwt) return send401();
-
-      return verify(jwt, SECRET, (err, jwt) => {
-        if (err) {
-          return send401();
-        } else {
-          const message = `Your user id is: ${jwt.userId}`;
-          res.writeHead(
-            200,
-            {
-              'Content-Type': 'text/plain',
-              'Content-Length': message.length
-            }
-          );
-          return res.end(message);
-        }
-      });
     }
+    else {
+      res.end();}
   }
-
-
-
-
 
 module.exports = router;
