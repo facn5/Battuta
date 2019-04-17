@@ -4,7 +4,7 @@
   "description": "Rideshare app for travelers near and far",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js | tap.spec",
+    "test": "node tests/test_bcrypt.js | tap-spec",
     "devStart": "nodemon src/server.js"
   },
   "repository": {
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/facn5/Battuta#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cookie": "^0.3.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.9.0"
