@@ -18,4 +18,12 @@ const comparePasswords = (password, hashedPassword, callback) => {
   bcrypt.compare(password, hashedPassword, callback);
 };
 
+(function () {
+let form = document.querySelector('form');
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  console.log("adding ride:", form.elements.value);
+});
+}) ();
+
 module.exports = {comparePasswords, hashPassword};
