@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const qs = require('querystring');
-// const getData = require('./queries/getData');
+const getData = require('./queries/getData');
 const postData = require('./queries/postData');
 // const deleteData = require('./queries/deleteData');
+const dbConnection = require('./database/db_connection.js');
 
 let extType = {
     html: { "content-type": "text/html" },
@@ -39,6 +40,28 @@ const handlePublic = (url, res) => {
     })
 }
 
+const handleData = (res) => {
+  dbConnection.query('SELECT * FROM rides;', (err, result) => {
+    if(err) {
+      res.writeHead(500);
+      res.end("server error 500");
+    } else {
+    // console.log(result.rows);
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.end(result);
+  }
+  });
+  // getData.getRides((err, result) => {
+  //   if (err) {
+  //     res.writeHead(500);
+  //     res.end('server error 500');
+  //   }
+  //   let newData = JSON.stringify(result);
+  //   res.writeHead(200, extType.json);
+  //   res.end(newData);
+  // })
+}
+
 const handlePost = (req, res) => {
   let body = '';
   req.on('data', chunk => {
@@ -48,11 +71,11 @@ const handlePost = (req, res) => {
     if (body != null) {
       const ps = qs.parse(body);
       // console.log(typeof +ps.driverid);
-      console.log(ps);
-      console.log(ps.driverid, ps.pickup, ps.dropoff, ps.price);
+      // console.log(ps);
+      // console.log(ps.driverid, ps.pickup, ps.dropoff, ps.price);
       postData.addRide(+ps.driverid, ps.pickup, ps.dropoff, +ps.price, res, (err, result) => {
         if (err)
-        console.log("error 2"+ err);
+        // console.log("error 2"+ err);
         res.writeHead(302, {'Location': '/'});
         res.end();
       });
@@ -63,5 +86,6 @@ const handlePost = (req, res) => {
 module.exports = {
     home: handleHome,
     public: handlePublic,
-    post: handlePost
+    post: handlePost,
+    data: handleData
 }
