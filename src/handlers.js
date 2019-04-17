@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 // const qs = require('querystring');
 // const getData = require('./queries/getData');
-// const postData = require('./queries/postData');
+const postData = require('./queries/postData');
 // const deleteData = require('./queries/deleteData');
 
 let extType = {
@@ -39,7 +39,25 @@ const handlePublic = (url, res) => {
     })
 }
 
+const handlePost = (req, res) => {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    if (body != null) {
+      const ps = qs.parse(body);
+      postData.post(ps.driver_id, ps.pickup, ps.dropoff, ps.price, res, (err, result) => {
+        if (err) return console.log('error');
+        res.writeHead(302, {'Location': '/'});
+        res.end();
+      });
+    };
+  });
+};
+
 module.exports = {
     home: handleHome,
-    public: handlePublic
+    public: handlePublic,
+    post: handlePost
 }
