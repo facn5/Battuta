@@ -48,7 +48,7 @@ const handleData = (res) => {
     } else {
     // console.log(result.rows);
     res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end(result);
+    res.end(result.toString());
   }
   });
   // getData.getRides((err, result) => {
@@ -70,14 +70,12 @@ const handlePost = (req, res) => {
   req.on('end', () => {
     if (body != null) {
       const ps = qs.parse(body);
-      // console.log(typeof +ps.driverid);
-      // console.log(ps);
-      // console.log(ps.driverid, ps.pickup, ps.dropoff, ps.price);
       postData.addRide(+ps.driverid, ps.pickup, ps.dropoff, +ps.price, res, (err, result) => {
-        if (err)
-        // console.log("error 2"+ err);
+        if (err) {
+          console.log("error in handler:" + err);
+        }
         res.writeHead(302, {'Location': '/'});
-        res.end();
+        res.end(console.log("results:" + res));
       });
     };
   });
