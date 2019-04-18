@@ -27,7 +27,10 @@ const router = (req, res) => {
         res.writeHead(302, {'Location': '/', 'Set-Cookie': 'jwt=0; Max-Age=0'});
         return res.end();
       }
-    } else if (url.indexOf('public') !== -1){
+    } else if (url === '/getOffers') {
+      handler.data(res);
+    }
+    else if (url.indexOf('public') !== -1){
         handler.public(url, res);
     } else if (url === '/addRide') {
       if (req.method === 'POST') {
@@ -35,6 +38,9 @@ const router = (req, res) => {
         res.writeHead(302, {'Location': '/', "Content-Type": 'text/plain'});
         return res.end();
       }
+    } else if (url === '/getRides') {
+      handler.data(req, res);
+      console.log(res);
     }
     else {
       res.end();}

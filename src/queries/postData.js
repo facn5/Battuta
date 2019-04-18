@@ -11,7 +11,7 @@ const addRide = (driverid, pickup, dropoff, price, response, cb) => {
       // console.log(err)
       // console.log(res.rows)
       if (err) return cb(err);
-      cb(null, res, response);
+      cb(null, res, console.log(response));
     }
   )
 }
