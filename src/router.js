@@ -31,9 +31,9 @@ const router = (req, res) => {
     // else if (url === '/getOffers') {
     //   handler.data(res);
     // }
-    // else if (url.indexOf('public') !== -1){
-    //     handler.public(url, res);
-    // }
+    else if (url.indexOf('public') !== -1){
+        handler.public(url, res);
+    }
     else if (url === '/addRide') {
       if (req.method === 'POST') {
         handler.post(req, res);
@@ -41,8 +41,8 @@ const router = (req, res) => {
         return res.end();
       }
     } else if (url === '/getRides') {
-      handler.data(req, res);
-      console.log(res);
+      handler.data(res);
+      console.log("getting response" + res);
     }
     else {
       res.end();}

@@ -29,6 +29,7 @@ const handleHome = (res) => {
 const handlePublic = (url, res) => {
     const ext = url.split('.')[1];
     let pathFile = path.join(__dirname, '..', url);
+    console.log(pathFile);
     fs.readFile(pathFile, (err, file) => {
         if (err) {
             res.writeHead(500);
@@ -47,8 +48,9 @@ const handleData = (res) => {
       res.end("server error 500");
     } else {
     // console.log(result.rows);
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end(result.toString());
+    console.log("response is: " + JSON.stringify(result));
+    res.writeHead(200, extType.json);
+    res.end(JSON.stringify(result));
   }
   });
   // getData.getRides((err, result) => {
