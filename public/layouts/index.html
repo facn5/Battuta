@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,73 +12,74 @@
   <meta name="keywords" content="battuta ibn duck rideshare blablacar rome 2 rio travel">
   <meta name="author" content="John and Obaydah">
 
-        <title>Battuta</title>
-    </head>
+  <title>Battuta</title>
+</head>
 
-    <body>
-        <h1>Hello</h1>
+<body>
+  <header>
+    <h1>Battuta</h1>
+  </header>
 
-        <form action="/login" method="POST">
-          <button type="submit">Login</button>
-        </form>
+  <form class="logins" action="/login" method="POST">
+    <button type="submit">Login</button>
+  </form>
 
-        <form action="/logout" method="POST">
-          <button type="submit">Logout</button>
-        </form>
+  <form class="logins" action="/logout" method="POST">
+    <button type="submit">Logout</button>
+  </form>
 
-        <a href="/auth_check"><button>Am I Authenticated?</button></a>
+  <!-- <a href="/auth_check"><button>Am I Authenticated?</button></a> -->
 
-        <header>
-          <h1>Battuta</h1>
-        </header>
+  <!-- <h2>Profile</h2> -->
 
-        <h2>Profile</h2>
+  <h2></h2>
 
-        <h2>Add a Ride</h2>
+  <form class="" action="/addRide" method="POST">
 
-        <form class="" action="/addRide" method="POST">
+    <fieldset>
+      <legend>Offer a Ride</legend>
+      <input type="number" name="driverid">
+      <input type="text" name="pickup">
+      <input type="text" name="dropoff">
+      <input type="number" name="price">
+      <div id="offerButtons">
+      <input type="submit" name="submit" value="submit">
+      <input type="reset" name="reset" value="reset">
+    </div>
+    </fieldset>
 
-          <fieldset>
-            <legend>Offer a Ride</legend>
-            <input type="number" name="driverid">
-            <input type="text" name="pickup">
-            <input type="text" name="dropoff">
-            <input type="number" name="price">
-            <input type="submit" name="submit" value="submit">
-            <input type="reset" name="reset" value="reset">
-          </fieldset>
+  </form>
 
-        </form>
+<fieldset>
+  <legend>Get a Ride</legend>
 
-        <table>
-          <caption>My Rides</caption>
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Price</th>
-            <th></th>
-            <th></th>
-          </tr>
-          <tr>
-            <td>1 July 2019</td>
-            <td>14:30pm</td>
-            <td>Haifa</td>
-            <td>Jerusalem</td>
-            <td>50</td>
-            <td>Edit</td>
-            <td>Delete</td>
+  <table>
+    <!-- <caption>My Rides</caption> -->
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>1 July 2019</td>
+      <td>14:30pm</td>
+      <td>Haifa</td>
+      <td>Jerusalem</td>
+      <td>50</td>
+      <td>Edit</td>
+      <td>Delete</td>
 
-          </tr>
-        </table>
-        
-        <h2>My car</h2>
+    </tr>
+  </table>
+</fieldset>
 
-        <footer>Battuta app copyright 2019 J&O Solutions, all rights reserved</footer>
+  <script type="text/javascript" src="public/scripts/index.js"></script>
+  <script type="text/javascript" src="public/scripts/fetch.js"></script>
+  <script type="text/javascript" src="public/scripts/dom.js"></script>
+</body>
 
-        <script type="text/javascript" src="public/scripts/index.js"></script>
-        <script type="text/javascript" src="public/scripts/fetch.js"></script>
-        <script type="text/javascript" src="public/scripts/dom.js"></script>
-    </body>
 </html>
